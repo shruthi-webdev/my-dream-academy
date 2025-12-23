@@ -1526,31 +1526,71 @@ section {
   transform: scale(var(--hover-scale-minimal));
 }
 
-/* Info Section */
-.coach-info {
-  padding: var(--space-24);
+/* Update coach-card to be the positioning context */
+.coach-card {
+    /* Keep existing styles */
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--duration-normal) var(--ease-standard);
+    text-align: center;
+    /* * IMPORTANT: Set position relative for absolute positioning of overlay
+     * The coach-card is now the containing block for the coach-overlay.
+     */
+    position: relative; 
 }
 
-.coach-name {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin-bottom: var(--space-8);
+/* Remove the old .coach-info styles if they are not used and replace with the following: */
+
+/* --- The Small Info Box (coach-overlay) --- */
+.coach-overlay {
+    /* Positioning to the bottom of the coach-card/image */
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    
+    /* Styling for the box */
+    background-color: rgba(18, 18, 18, 0.85); /* A dark, semi-transparent overlay */
+    color: white; /* White text for contrast */
+    padding: var(--space-16) var(--space-12); /* Adjusted padding */
+    box-sizing: border-box; 
+    transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
-.coach-speciality {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  margin-bottom: var(--space-8);
+/* Optional: Slightly darker on hover for a subtle effect */
+.coach-card:hover .coach-overlay {
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
-.coach-experience,
-.coach-achievements {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--space-6);
-  line-height: 1.5;
+/* Style the content within the box (coach-details) */
+.coach-details {
+    /* Ensure the text is centered within the box */
+    text-align: center; 
+}
+
+.coach-details .coach-name {
+    /* Re-use your name styles but override color/margin for the overlay */
+    font-size: var(--font-size-lg); /* Slightly smaller than your old .coach-name for the compact box */
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gold); /* Use your accent color for the name */
+    margin: 0 0 var(--space-4) 0;
+}
+
+.coach-details .coach-speciality {
+    color: white; /* Use white for the primary text */
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin: 0 0 var(--space-4) 0;
+}
+
+.coach-details .coach-experience,
+.coach-details .coach-achievements {
+    color: var(--color-text-light); /* Use a lighter gray for secondary info */
+    font-size: var(--font-size-xs); /* Make the detail lines smaller and tighter */
+    margin: 0; /* Remove default margin */
+    line-height: 1.3; /* Tighter line height */
 }
 
 /* Swiper Controls */
@@ -1853,6 +1893,7 @@ section {
   gap: 1.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  justify-content: center;
   padding: 2rem 1rem;
   cursor: grab;
   scroll-behavior: smooth;
