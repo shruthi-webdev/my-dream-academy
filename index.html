@@ -4,12 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dream Academy - Premier Badminton Training</title>
+    <meta name="description" content="My Dream Academy — Premier sports training in Badminton, Karate, Silambam, Boxing, Skating, Fitness & Dance. Explore world-class coaching in Madurai.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- Locomotive Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-counter" id="loaderCounter">0</div>
+        <div class="loader-bar-track">
+            <div class="loader-bar-fill" id="loaderBar"></div>
+        </div>
+        <div class="loader-text">Loading Experience</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
     <!-- Navigation -->
-    <nav class="nav">
+    <nav class="nav" id="mainNav">
         <div class="nav-container">
             <div class="nav-brand">
                   <div class="logo">
@@ -29,12 +55,9 @@
                         <span class="sidebar-text">Home</span>
                     </a>
                     <a href="#specialized" class="sidebar-link">
-                        
                         <span class="sidebar-text">Specialized Programs</span>
                     </a>
-                    
                     <a href="#programs" class="sidebar-link">
-                        
                         <span class="sidebar-text">Programs</span>
                     </a>
                     <a href="#coaches" class="sidebar-link">
@@ -62,29 +85,34 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background">
+            <video autoplay muted loop playsinline id="heroVideo" poster="https://i.postimg.cc/wvHG8xLJ/court-final.jpg">
+                <source src="https://videos.pexels.com/video-files/4761437/4761437-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            </video>
             <div class="hero-overlay"></div>
         </div>
-        <div class="hero-particles"></div>
         <div class="hero-content">
-           
-            <h1 class="hero-title parallax-element" data-speed="0.5">My Dream Academy</h1>
-            <p class="hero-tagline typewriter-text" data-text="Beyond the screen — a space to play, perform, and grow."></p>
-            <p class="hero-vision fade-in-up">Becoming a beacon of excellence in holistic extracurricular education, where every individual can explore and unlock their true potential.</p>
-            <button class="btn btn--primary btn--lg hero-cta pulse-glow">Start Your Journey</button>
+            <h1 class="hero-title" data-scroll data-scroll-speed="1">My Dream<br><span class="accent">Academy</span></h1>
+            <p class="hero-tagline">Beyond the screen — a space to play, perform, and grow.</p>
+            <p class="hero-vision">Becoming a beacon of excellence in holistic extracurricular education, where every individual can explore and unlock their true potential.</p>
+            <button class="hero-cta magnetic-btn"><span>Start Your Journey</span></button>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
     <!-- Specialized Programs Section -->
     <section id="specialized" class="specialized-programs">
         <div class="container">
-            <h2 class="section-title">Specialized Training Programs</h2>
+            <div class="section-label reveal-text"><span class="label-line"></span> 01 — SPECIALIZED</div>
+            <h2 class="section-title reveal-text">Specialized Training<br>Programs</h2>
             <div class="specialized-grid">
-                <div class="specialized-card gym-program">
-                    <div class="specialized-background"></div>
+                <div class="specialized-card reveal-up">
+                    <div class="specialized-background gym-program"></div>
                     <div class="specialized-overlay"></div>
                     <div class="specialized-content">
                         <div class="program-label">
-                            
                             <span class="program-name">GYM</span>
                         </div>
                         <div class="program-details">
@@ -96,16 +124,15 @@
                                 <li>Customized workout plans</li>
                                 <li>Nutrition guidance</li>
                             </ul>
-                            <button class="btn btn--primary program-cta">Join Now</button>
+                            <button class="program-cta magnetic-btn">Join Now</button>
                         </div>
                     </div>
                 </div>
-                <div class="specialized-card badminton-program">
-                    <div class="specialized-background"></div>
+                <div class="specialized-card reveal-up" style="transition-delay: 0.1s">
+                    <div class="specialized-background badminton-program"></div>
                     <div class="specialized-overlay"></div>
                     <div class="specialized-content">
                         <div class="program-label">
-                           
                             <span class="program-name">BADMINTON</span>
                         </div>
                         <div class="program-details">
@@ -117,12 +144,12 @@
                                 <li>Tournament preparation</li>
                                 <li>Equipment provided</li>
                             </ul>
-                            <button class="btn btn--primary program-cta">Join Now</button>
+                            <button class="program-cta magnetic-btn">Join Now</button>
                         </div>
                     </div>
                 </div>
-                <div class="specialized-card karate-program">
-                    <div class="specialized-background"></div>
+                <div class="specialized-card reveal-up" style="transition-delay: 0.2s">
+                    <div class="specialized-background karate-program"></div>
                     <div class="specialized-overlay"></div>
                     <div class="specialized-content">
                         <div class="program-label">
@@ -137,7 +164,7 @@
                                 <li>Character development</li>
                                 <li>Competition training</li>
                             </ul>
-                            <button class="btn btn--primary program-cta">Join Now</button>
+                            <button class="program-cta magnetic-btn">Join Now</button>
                         </div>
                     </div>
                 </div>
@@ -148,21 +175,21 @@
     <!-- Explore Programs & Stats Section -->
     <section class="explore-stats">
         <div class="container">
-            <div class="explore-buttons">
-                <button class="btn btn--explore">Explore Programs</button>
-                <button class="btn btn--enroll">Enroll Now</button>
+            <div class="explore-buttons reveal-up">
+                <button class="btn btn--explore magnetic-btn">Explore Programs</button>
+                <button class="btn btn--enroll magnetic-btn">Enroll Now</button>
             </div>
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">7</div>
+                <div class="stat-card reveal-up">
+                    <div class="stat-number" data-target="7">7</div>
                     <div class="stat-label">Sports Programs</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">15+</div>
+                <div class="stat-card reveal-up" style="transition-delay: 0.1s">
+                    <div class="stat-number" data-target="15">15+</div>
                     <div class="stat-label">Years Experience</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">100+</div>
+                <div class="stat-card reveal-up" style="transition-delay: 0.2s">
+                    <div class="stat-number" data-target="100">100+</div>
                     <div class="stat-label">Students Trained</div>
                 </div>
             </div>
@@ -172,57 +199,51 @@
     <!-- All Programs Section -->
     <section id="programs" class="programs">
         <div class="container">
-            <h2 class="section-title">All Sports Programs</h2>
+            <div class="section-label reveal-text"><span class="label-line"></span> 02 — PROGRAMS</div>
+            <h2 class="section-title reveal-text">All Sports<br>Programs</h2>
 
             <div class="programs-grid">
-                <div class="program-card program-card--featured">
+                <div class="program-card program-card--featured reveal-scale">
                     <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/QVLHygv2/court4.webp" alt="Badminton Court"></div>
                     <h3 class="program-name">Badminton</h3>
                     <p class="program-description">Top-notch wooden courts, professional lighting, expert coaching</p>
                     <span class="program-experience">Batch: Mon-Fri: 6AM-9PM | Sat-Sun: 6AM-8PM</span>
-                     
                 </div>
-                <div class="program-card">
+                <div class="program-card reveal-scale">
                     <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/T185yFZ8/silambam.jpg" alt="Silambam"></div>
                     <h3 class="program-name">Silambam</h3>
                     <p class="program-description">Traditional training under experienced instructors</p>
                     <span class="program-experience">Batch: Mon-Fri: 6AM-9PM | Sat-Sun: 6AM-8PM</span>
-                   
                 </div>
-                <div class="program-card">
+                <div class="program-card reveal-scale">
                     <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/0j2Bbjz0/Whats-App-Image-2025-06-25-at-15-28-12.jpg" alt="Boxing"></div>
                     <h3 class="program-name">Boxing</h3>
                     <p class="program-description">Safe techniques and structured workouts for fitness</p>
                     <span class="program-experience">Batch: Mon-Fri: 6AM-9PM | Sat-Sun: 6AM-8PM</span>
-                    
                 </div>
-                <div class="program-card">
+                <div class="program-card reveal-scale">
                     <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/Y04LjkXz/karate-martialartist-taekwondo-fighting-kungfu.jpg" alt="Karate"></div>
                     <h3 class="program-name">Karate</h3>
                     <p class="program-description">Certified black belt professionals for precision training</p>
                     <span class="program-experience">Batch: Mon-Fri: 6AM-9PM | Sat-Sun: 6AM-8PM</span>
-                    
                 </div>
-                <div class="program-card">
-                    <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/HnVyBWQy/Learn-More-About-Kids-Skating.jpg" alt="Boxing"></div>
+                <div class="program-card reveal-scale">
+                    <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/HnVyBWQy/Learn-More-About-Kids-Skating.jpg" alt="Skating"></div>
                     <h3 class="program-name">Skating</h3>
                     <p class="program-description">Safe practice environments with skilled coaches</p>
                     <span class="program-experience">Batch: Mon-Fri: 6AM-9PM | Sat-Sun: 6AM-8PM</span>
-                    
                 </div>
-                <div class="program-card">
-                    <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/44pvSK0R/Whats-App-Image-2025-08-23-at-13-56-39.jpg" alt="Boxing"></div>
+                <div class="program-card reveal-scale">
+                    <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/44pvSK0R/Whats-App-Image-2025-08-23-at-13-56-39.jpg" alt="Fitness"></div>
                     <h3 class="program-name">Fitness</h3>
                     <p class="program-description">Personalised and goal-oriented workouts for all levels</p>
                     <span class="program-experience">Batch: Mon-Fri: 6AM-9PM | Sat-Sun: 6AM-8PM</span>
-                   
                 </div>
-                <div class="program-card">
+                <div class="program-card reveal-scale">
                     <div class="program-icon"><img class="facility-image" src="https://i.postimg.cc/D0VPhGGT/dance-floor.webp" alt="Dance"></div>
                     <h3 class="program-name">Dance</h3>
                     <p class="program-description">Classical, folk, and contemporary styles training</p>
                     <span class="program-experience">Batch: Mon-Fri: 6AM-9PM | Sat-Sun: 6AM-8PM</span>
-                   
                 </div>
             </div>
         </div>
@@ -231,7 +252,8 @@
     <!-- Coaches Section -->
     <section id="coaches" class="coaches">
         <div class="container">
-            <h2 class="section-title">Meet Our Expert Coaches</h2>
+            <div class="section-label reveal-text"><span class="label-line"></span> 03 — COACHES</div>
+            <h2 class="section-title reveal-text">Meet Our Expert<br>Coaches</h2>
             <div class="coaches-wrapper">
                 <div class="swiper coaches-swiper">
                     <div class="swiper-wrapper">
@@ -298,7 +320,7 @@
                         <div class="swiper-slide">
                             <div class="coach-card">
                                 <div class="coach-image">
-                                    <img src="https://i.postimg.cc/W4Z1RVLf/Whats-App-Image-2025-07-14-at-09-00-09.jpg"alt="Boxing Coaches" loading="lazy">
+                                    <img src="https://i.postimg.cc/W4Z1RVLf/Whats-App-Image-2025-07-14-at-09-00-09.jpg" alt="Boxing Coaches" loading="lazy">
                                     <div class="coach-overlay">
                                         <div class="coach-details">
                                             <h3 class="coach-name">Coach Alagurajan &amp; Giridharan</h3>
@@ -322,7 +344,8 @@
     <!-- Achievements Section -->
     <section id="achievements" class="achievements">
         <div class="container">
-            <h2 class="section-title">Our Champions &amp; Achievements</h2>
+            <div class="section-label reveal-text"><span class="label-line"></span> 04 — ACHIEVEMENTS</div>
+            <h2 class="section-title reveal-text">Our Champions &amp;<br>Achievements</h2>
             <div class="achievements-wrapper">
                 <div class="swiper achievements-swiper">
                     <div class="swiper-wrapper">
@@ -395,70 +418,69 @@
         </div>
     </section>
 
-    
-
+    <!-- Testimonials Section -->
     <section id="testimonials">
-  <h2 class="section-title">What People Say</h2>
+        <div class="section-label reveal-text" style="padding: 0 var(--container-padding); max-width: var(--container-max); margin: 0 auto;"><span class="label-line"></span> 05 — TESTIMONIALS</div>
+        <h2 class="section-title reveal-text" style="padding: 0 var(--container-padding); max-width: var(--container-max); margin: 0 auto 60px;">What People<br>Say</h2>
 
-  <div class="testimonials-container">
-    <!-- Testimonial 1 -->
-    <div class="testimonial-card">
-      <div class="testimonial-avatar">
-        <img src="https://i.postimg.cc/Gpz1nsjf/Whats-App-Image-2025-06-11-at-08-58-45.jpg" alt="G. CHANDRA">
-      </div>
-      <div class="testimonial-content">
-        <div class="testimonial-stars">
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
-        </div>
-        <p class="testimonial-text">
-          "One of the best courts in Madurai—international standards and excellent maintenance.
-          I can confidently say this academy stands out. Mr. Manimaran's passion and commitment shine through in every detail."
-        </p>
-        <div class="testimonial-author">
-          <h4 class="author-name">G. CHANDRA</h4>
-          <p class="author-role">Retired Banker</p>
-        </div>
-      </div>
-    </div>
+        <div class="testimonials-container">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="https://i.postimg.cc/Gpz1nsjf/Whats-App-Image-2025-06-11-at-08-58-45.jpg" alt="G. CHANDRA">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "One of the best courts in Madurai—international standards and excellent maintenance.
+                        I can confidently say this academy stands out. Mr. Manimaran's passion and commitment shine through in every detail."
+                    </p>
+                    <div class="testimonial-author">
+                        <h4 class="author-name">G. CHANDRA</h4>
+                        <p class="author-role">Retired Banker</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Testimonial 2 -->
-    <div class="testimonial-card">
-      <div class="testimonial-avatar">
-        <img src="https://i.postimg.cc/0ywBCK3S/Whats-App-Image-2025-06-07-at-14-38-43.jpg" alt="R.T. SIVANESAN">
-      </div>
-      <div class="testimonial-content">
-        <div class="testimonial-stars">
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
-          <span class="star active">⭐</span>
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="https://i.postimg.cc/0ywBCK3S/Whats-App-Image-2025-06-07-at-14-38-43.jpg" alt="R.T. SIVANESAN">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                        <span class="star active">⭐</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "As a parent, I'm truly grateful to My Dream Badminton Academy. In just a year, my daughter went from beginner to district runner-up (U-11),
+                        all thanks to Coach Deepak's excellent training. The flexible timings, match support, and reasonable fees make this academy a perfect choice for young talent."
+                    </p>
+                    <div class="testimonial-author">
+                        <h4 class="author-name">R.T. SIVANESAN</h4>
+                        <p class="author-role">Parent</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="testimonial-text">
-          "As a parent, I’m truly grateful to My Dream Badminton Academy. In just a year, my daughter went from beginner to district runner-up (U-11),
-          all thanks to Coach Deepak’s excellent training. The flexible timings, match support, and reasonable fees make this academy a perfect choice for young talent."
-        </p>
-        <div class="testimonial-author">
-          <h4 class="author-name">R.T. SIVANESAN</h4>
-          <p class="author-role">Parent</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-label reveal-text"><span class="label-line"></span> 06 — CONTACT</div>
+            <h2 class="section-title reveal-text">Get In<br>Touch</h2>
             <div class="contact-content">
-                <div class="contact-info">
+                <div class="contact-info reveal-left">
                     <div class="contact-item">
                         <div class="contact-icon">📞</div>
                         <div class="contact-details">
@@ -477,7 +499,6 @@
                         <div class="contact-icon">📍</div>
                         <div class="contact-details">
                             <p>X368+8QH, AIBEA A Colony, Paravai, Madurai, Tamil Nadu 625018</p>
-                            
                         </div>
                     </div>
                     <div class="contact-item">
@@ -488,7 +509,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form reveal-right">
                     <form class="form" action="https://submit-form.com/BCE4ehRIM">
                         <div class="form-group">
                             <label class="form-label">Name</label>
@@ -515,7 +536,7 @@
                             <label class="form-label">Message</label>
                             <textarea class="form-control" rows="4" placeholder="Tell us about your goals and interests"></textarea>
                         </div>
-                        <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                        <button type="submit" class="btn btn--primary btn--full-width magnetic-btn">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -552,7 +573,10 @@
         </a>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
