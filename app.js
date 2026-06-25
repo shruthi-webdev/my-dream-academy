@@ -40,7 +40,7 @@ class LoadingScreen {
         setTimeout(() => {
             this.loader.classList.add('loaded');
             document.body.style.overflow = '';
-            
+
             // Trigger hero animations after loader finishes
             setTimeout(() => {
                 heroAnimations();
@@ -138,7 +138,7 @@ class MagneticButtons {
                 const rect = btn.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                
+
                 gsap.to(btn, {
                     x: x * 0.3,
                     y: y * 0.3,
@@ -244,7 +244,7 @@ class Navigation {
         document.body.style.overflow = 'hidden';
 
         // Stagger sidebar links animation
-        gsap.fromTo('.sidebar-link', 
+        gsap.fromTo('.sidebar-link',
             { x: 60, opacity: 0 },
             { x: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.2 }
         );
@@ -271,21 +271,21 @@ function heroAnimations() {
         duration: 1.2,
         delay: 0.2
     })
-    .to('.hero-tagline', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-    }, '-=0.7')
-    .to('.hero-vision', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-    }, '-=0.6')
-    .to('.hero-cta', {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-    }, '-=0.5');
+        .to('.hero-tagline', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+        }, '-=0.7')
+        .to('.hero-vision', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+        }, '-=0.6')
+        .to('.hero-cta', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+        }, '-=0.5');
 
     // Parallax on hero video
     gsap.to('.hero-background video, .hero-background img, .hero-bg-fallback', {
@@ -409,14 +409,14 @@ class ScrollAnimations {
         const suffix = text.replace(/[0-9]/g, '');
         const duration = 2;
 
-        gsap.fromTo(element, 
+        gsap.fromTo(element,
             { innerText: 0 },
             {
                 innerText: target,
                 duration: duration,
                 ease: 'power2.out',
                 snap: { innerText: 1 },
-                onUpdate: function() {
+                onUpdate: function () {
                     element.textContent = Math.floor(element.innerText) + suffix;
                 }
             }
@@ -430,13 +430,27 @@ class ScrollAnimations {
             start: 'top 80%',
             once: true,
             onEnter: () => {
-                gsap.to('.specialized-card', {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    stagger: 0.15,
-                    ease: 'power3.out'
-                });
+                const cards = gsap.utils.toArray('.specialized-card');
+                
+                // Fly in from sides and bottom
+                if(cards[0]) {
+                    gsap.fromTo(cards[0], 
+                        { x: -150, y: 50, opacity: 0 }, 
+                        { x: 0, y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+                    );
+                }
+                if(cards[1]) {
+                    gsap.fromTo(cards[1], 
+                        { y: 150, opacity: 0 }, 
+                        { y: 0, opacity: 1, duration: 1.2, delay: 0.2, ease: 'power3.out' }
+                    );
+                }
+                if(cards[2]) {
+                    gsap.fromTo(cards[2], 
+                        { x: 150, y: 50, opacity: 0 }, 
+                        { x: 0, y: 0, opacity: 1, duration: 1.2, delay: 0.4, ease: 'power3.out' }
+                    );
+                }
             }
         });
 
@@ -572,7 +586,7 @@ class SwiperManager {
                 1024: { slidesPerView: 3 },
             },
             speed: 800,
-            grabCursor: false,
+            grabCursor: true,
         });
     }
 
@@ -599,7 +613,7 @@ class SwiperManager {
                 1024: { slidesPerView: 3 },
             },
             speed: 800,
-            grabCursor: false,
+            grabCursor: true,
         });
     }
 }
@@ -692,7 +706,7 @@ class ButtonManager {
                     if (programCard.querySelector('.gym-program') || programCard.querySelector('.specialized-background.gym-program') || programCard.classList.toString().includes('gym')) programName = 'fitness';
                     else if (programCard.querySelector('.badminton-program') || programCard.classList.toString().includes('badminton')) programName = 'badminton';
                     else if (programCard.querySelector('.karate-program') || programCard.classList.toString().includes('karate')) programName = 'karate';
-                    
+
                     // Check background class
                     const bg = programCard.querySelector('.specialized-background');
                     if (bg) {
@@ -734,7 +748,7 @@ class ContactForm {
 
     handleSubmit(e) {
         e.preventDefault();
-        
+
         const nameInput = this.form.querySelector('input[type="text"]');
         const emailInput = this.form.querySelector('input[type="email"]');
         const programSelect = this.form.querySelector('select');
