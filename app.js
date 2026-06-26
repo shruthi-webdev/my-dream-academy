@@ -503,20 +503,51 @@ class ScrollAnimations {
         });
 
         // Testimonial cards
-        ScrollTrigger.create({
-            trigger: '.testimonials-container',
-            start: 'top 80%',
-            once: true,
-            onEnter: () => {
-                gsap.to('.testimonial-card', {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'power3.out'
+        const testSection = document.querySelector('#testimonials');
+        if (testSection) {
+            const cards = testSection.querySelectorAll('.testimonial-card');
+            
+            if (window.innerWidth > 768) {
+                // Desktop: Scrub animation from corners to center
+                gsap.set(cards, { opacity: 1 });
+                
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: testSection,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+                
+                const centerIndex = (cards.length - 1) / 2;
+                const distance = 120; // small movement span
+
+                cards.forEach((card, i) => {
+                    const offset = i - centerIndex;
+                    const initialX = offset * distance;
+                    
+                    // Animate inwards
+                    tl.fromTo(card, { x: initialX }, { x: 0, duration: 1, ease: 'none' }, 0);
+                    
+                    // Animate outwards
+                    tl.to(card, { x: initialX, duration: 1, ease: 'none' }, 1);
+                });
+            } else {
+                // Mobile: Standard stagger reveal
+                ScrollTrigger.create({
+                    trigger: testSection,
+                    start: 'top 80%',
+                    once: true,
+                    onEnter: () => {
+                        gsap.fromTo(cards, 
+                            { opacity: 0, y: 40 },
+                            { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' }
+                        );
+                    }
                 });
             }
-        });
+        }
 
         // Contact items stagger
         ScrollTrigger.create({
