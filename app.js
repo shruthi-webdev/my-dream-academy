@@ -846,20 +846,7 @@ class VideoBackground {
             this.video.parentElement.insertBefore(fallback, this.video);
         });
 
-        // On mobile, prefer image over video for performance
-        if (window.innerWidth <= 768) {
-            this.video.pause();
-            this.video.removeAttribute('autoplay');
-            this.video.style.display = 'none';
-            const fallback = document.createElement('div');
-            fallback.className = 'hero-bg-fallback';
-            fallback.style.cssText = `
-                width: 100%; height: 100%;
-                background-image: url('https://i.postimg.cc/wvHG8xLJ/court-final.jpg');
-                background-size: cover; background-position: center;
-            `;
-            this.video.parentElement.insertBefore(fallback, this.video);
-        }
+        // Mobile fallback disabled as per user request to allow continuous playing
     }
 }
 
