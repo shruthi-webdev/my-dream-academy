@@ -272,7 +272,6 @@ function heroAnimations() {
             duration: 0.8,
         }, '-=0.5');
 
-    // Parallax on hero video
     gsap.to('.hero-background video, .hero-background img, .hero-bg-fallback', {
         yPercent: 30,
         ease: 'none',
@@ -341,7 +340,7 @@ class ScrollAnimations {
             });
         });
 
-  
+        
         gsap.utils.toArray('.reveal-left').forEach(el => {
             gsap.to(el, {
                 opacity: 1,
@@ -356,7 +355,7 @@ class ScrollAnimations {
             });
         });
 
-   
+        
         gsap.utils.toArray('.reveal-right').forEach(el => {
             gsap.to(el, {
                 opacity: 1,
@@ -434,7 +433,6 @@ class ScrollAnimations {
             }
         });
 
-  
         ScrollTrigger.create({
             trigger: '.programs-grid',
             start: 'top 80%',
@@ -542,7 +540,6 @@ class ScrollAnimations {
             }
         });
 
-        // Section labels parallax
         gsap.utils.toArray('.section-label').forEach(label => {
             gsap.to(label, {
                 x: 30,
@@ -558,9 +555,6 @@ class ScrollAnimations {
     }
 }
 
-// ============================================
-// SWIPER CONFIGURATIONS
-// ============================================
 class SwiperManager {
     constructor() {
         this.init();
@@ -626,9 +620,6 @@ class SwiperManager {
     }
 }
 
-// ============================================
-// SMOOTH SCROLL
-// ============================================
 class SmoothScroll {
     constructor() {
         this.init();
@@ -652,9 +643,6 @@ class SmoothScroll {
     }
 }
 
-// ============================================
-// BUTTON MANAGER
-// ============================================
 class ButtonManager {
     constructor() {
         this.init();
@@ -715,7 +703,6 @@ class ButtonManager {
                     else if (programCard.querySelector('.badminton-program') || programCard.classList.toString().includes('badminton')) programName = 'badminton';
                     else if (programCard.querySelector('.karate-program') || programCard.classList.toString().includes('karate')) programName = 'karate';
 
-                    // Check background class
                     const bg = programCard.querySelector('.specialized-background');
                     if (bg) {
                         if (bg.classList.contains('gym-program')) programName = 'fitness';
@@ -739,9 +726,6 @@ class ButtonManager {
     }
 }
 
-// ============================================
-// CONTACT FORM
-// ============================================
 class ContactForm {
     constructor() {
         this.form = document.querySelector('.contact-form form');
@@ -798,9 +782,6 @@ class ContactForm {
     }
 }
 
-// ============================================
-// VIDEO BACKGROUND HANDLER
-// ============================================
 class VideoBackground {
     constructor() {
         this.video = document.getElementById('heroVideo');
@@ -810,7 +791,6 @@ class VideoBackground {
     init() {
         if (!this.video) return;
 
-        // Fallback to poster image on error
         this.video.addEventListener('error', () => {
             this.video.style.display = 'none';
             const fallback = document.createElement('div');
@@ -823,13 +803,9 @@ class VideoBackground {
             this.video.parentElement.insertBefore(fallback, this.video);
         });
 
-        // Mobile fallback disabled as per user request to allow continuous playing
     }
 }
 
-// ============================================
-// DRAG SCROLL FOR PROGRAM CARDS
-// ============================================
 class DragScroll {
     constructor() {
         this.container = document.querySelector('.programs-grid');
@@ -869,14 +845,9 @@ class DragScroll {
     }
 }
 
-// ============================================
-// INITIALIZE
-// ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Loading screen
     new LoadingScreen();
 
-    // Core features
     new CustomCursor();
     new MagneticButtons();
     new Navigation();
@@ -887,28 +858,24 @@ document.addEventListener('DOMContentLoaded', () => {
     new VideoBackground();
     new DragScroll();
 
-    // Scroll animations (after short delay for elements to render)
     setTimeout(() => {
         new ScrollAnimations();
     }, 100);
 
-    // Reduced motion support
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.body.classList.add('reduced-motion');
-        gsap.globalTimeline.timeScale(100); // Speed up all animations
+        gsap.globalTimeline.timeScale(100);
     }
 
     console.log('⚡ My Dream Academy — Premium Experience Loaded');
 });
 
-// Handle resize
 let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
         ScrollTrigger.refresh();
 
-        // Update cursor visibility
         const dot = document.getElementById('cursorDot');
         const outline = document.getElementById('cursorOutline');
         if (dot && outline) {

@@ -1,69 +1,50 @@
-/* ============================================
-   MY DREAM ACADEMY — PREMIUM DARK THEME
-   Inspired by XNRGY Club & Galekto
-   ============================================ */
 
-/* Google Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ============================================
-   DESIGN TOKENS
-   ============================================ */
 :root {
-  /* Color Palette — Dark Cinematic */
   --color-bg-deep: #050505;
   --color-bg-primary: #0a0a0a;
   --color-bg-surface: #111111;
   --color-bg-card: #1a1a1a;
   --color-bg-elevated: #222222;
 
-  /* Accent Colors */
   --color-accent: #c8ff00;
-  /* Electric lime */
   --color-accent-dim: rgba(200, 255, 0, 0.15);
   --color-accent-glow: rgba(200, 255, 0, 0.4);
   --color-gold: #e3cc4a;
   --color-gold-dim: rgba(227, 204, 74, 0.15);
 
-  /* Text */
   --color-text-primary: #f0f0f0;
   --color-text-secondary: #888888;
   --color-text-muted: #555555;
   --color-white: #ffffff;
 
-  /* Borders */
   --color-border: rgba(255, 255, 255, 0.06);
   --color-border-hover: rgba(255, 255, 255, 0.12);
   --color-border-accent: rgba(200, 255, 0, 0.2);
 
-  /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-bg-hover: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: 20px;
 
-  /* Typography */
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', 'Space Grotesk', sans-serif;
 
-  /* Spacing */
   --section-padding: clamp(80px, 12vw, 160px);
   --container-max: 1400px;
   --container-padding: clamp(20px, 5vw, 80px);
 
-  /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
   --radius-full: 9999px;
 
-  /* Shadows */
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 40px rgba(200, 255, 0, 0.15);
   --shadow-glow-strong: 0 0 60px rgba(200, 255, 0, 0.3);
 
-  /* Transitions */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --duration-fast: 0.2s;
@@ -72,9 +53,6 @@
   --duration-slower: 1.2s;
 }
 
-/* ============================================
-   RESET & BASE
-   ============================================ */
 *,
 *::before,
 *::after {
@@ -88,7 +66,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: auto;
-  /* Locomotive handles smooth scroll */
 }
 
 html.has-scroll-smooth {
@@ -108,7 +85,6 @@ body {
   cursor: none;
 }
 
-/* Grain texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -122,7 +98,6 @@ body::before {
   opacity: 0.5;
 }
 
-/* Grid lines overlay */
 body::after {
   content: '';
   position: fixed;
@@ -155,10 +130,7 @@ ol {
   list-style: none;
 }
 
-/* ============================================
-   CUSTOM SCROLLBAR
-   ============================================ */
-::-webkit-scrollbar {
+img {
   width: 6px;
 }
 
@@ -175,9 +147,6 @@ ol {
   background: var(--color-gold);
 }
 
-/* ============================================
-   CUSTOM CURSOR
-   ============================================ */
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -222,9 +191,6 @@ ol {
   background: rgba(200, 255, 0, 0.05);
 }
 
-/* ============================================
-   TYPOGRAPHY
-   ============================================ */
 h1,
 h2,
 h3,
@@ -244,9 +210,6 @@ p {
   color: var(--color-text-secondary);
 }
 
-/* ============================================
-   LOADING SCREEN
-   ============================================ */
 .page-loader {
   position: fixed;
   top: 0;
@@ -302,9 +265,6 @@ p {
   color: var(--color-text-muted);
 }
 
-/* ============================================
-   CONTAINER
-   ============================================ */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -312,9 +272,6 @@ p {
   padding: 0 var(--container-padding);
 }
 
-/* ============================================
-   NAVIGATION
-   ============================================ */
 .nav {
   position: fixed;
   top: 0;
@@ -378,7 +335,6 @@ p {
   letter-spacing: -0.02em;
 }
 
-/* Hamburger */
 .hamburger-btn {
   display: flex;
   flex-direction: column;
@@ -424,7 +380,6 @@ p {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Sidebar */
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -550,9 +505,6 @@ p {
   font-weight: inherit;
 }
 
-/* ============================================
-   HERO SECTION
-   ============================================ */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -596,7 +548,6 @@ p {
 
 .hero-particles {
   display: none;
-  /* Replaced by video */
 }
 
 .hero-content {
@@ -708,7 +659,6 @@ p {
   z-index: 1;
 }
 
-/* Scroll indicator */
 .hero-scroll-indicator {
   position: absolute;
   bottom: 40px;
@@ -763,7 +713,6 @@ p {
   }
 }
 
-/* Pulse glow — disable */
 .pulse-glow {
   animation: none;
 }
@@ -772,9 +721,6 @@ p {
   display: none;
 }
 
-/* ============================================
-   SECTION COMMON
-   ============================================ */
 section {
   position: relative;
   padding: var(--section-padding) 0;
@@ -814,17 +760,12 @@ section {
 
 .section-title::after {
   display: none;
-  /* Remove old underline */
 }
 
 .section-title::before {
   display: none;
-  /* Remove old glow */
 }
 
-/* ============================================
-   SPECIALIZED PROGRAMS (Full-bleed cards)
-   ============================================ */
 .specialized-programs {
   background: var(--color-bg-primary);
   padding: var(--section-padding) 0;
@@ -1006,9 +947,6 @@ section {
   box-shadow: 0 8px 24px rgba(200, 255, 0, 0.3);
 }
 
-/* ============================================
-   EXPLORE & STATS SECTION
-   ============================================ */
 .explore-stats {
   background-color: var(--color-bg-deep);
   background-image: 
@@ -1126,9 +1064,6 @@ section {
   color: var(--color-text-secondary);
 }
 
-/* ============================================
-   ALL PROGRAMS — HORIZONTAL SCROLL
-   ============================================ */
 .programs {
   background: var(--color-bg-primary);
   padding: var(--section-padding) 0;
@@ -1270,7 +1205,6 @@ section {
 }
 
 .coaches-wrapper {
-  /* Container for swiper */
 }
 
 .coach-card {
@@ -1359,7 +1293,6 @@ section {
   line-height: 1.5;
 }
 
-/* Swiper overrides */
 .swiper {
   padding: 16px 0 60px;
 }
@@ -1666,7 +1599,6 @@ section {
   line-height: 1.6;
 }
 
-/* Contact Form */
 .contact-form {
   background: var(--color-bg-card);
   padding: 40px;
@@ -1734,7 +1666,6 @@ select.form-control option {
   color: var(--color-text-primary);
 }
 
-/* Submit Button */
 .btn--primary {
   background: var(--color-accent);
   color: var(--color-bg-primary);
@@ -1900,7 +1831,6 @@ select.form-control option {
   transform: translateX(60px);
 }
 
-/* Disable old animations */
 .fade-in-up {
   opacity: 1;
   transform: none;
@@ -1949,7 +1879,6 @@ select.form-control option {
     --section-padding: 80px;
   }
 
-  /* Show default cursor on mobile */
   body,
   .hero-cta,
   .hamburger-btn,
