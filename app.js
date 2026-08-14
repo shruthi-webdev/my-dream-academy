@@ -1,14 +1,7 @@
-/* ============================================
-   MY DREAM ACADEMY — INTERACTIVE ENGINE
-   GSAP + ScrollTrigger + Custom Cursor
-   ============================================ */
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// ============================================
-// LOADING SCREEN
-// ============================================
+
 class LoadingScreen {
     constructor() {
         this.counter = document.getElementById('loaderCounter');
@@ -41,7 +34,7 @@ class LoadingScreen {
             this.loader.classList.add('loaded');
             document.body.style.overflow = '';
 
-            // Trigger hero animations after loader finishes
+          
             setTimeout(() => {
                 heroAnimations();
             }, 300);
@@ -49,9 +42,7 @@ class LoadingScreen {
     }
 }
 
-// ============================================
-// CUSTOM CURSOR
-// ============================================
+
 class CustomCursor {
     constructor() {
         this.dot = document.getElementById('cursorDot');
@@ -77,7 +68,7 @@ class CustomCursor {
             this.mouseY = e.clientY;
         });
 
-        // Hover effects
+     
         const interactiveElements = document.querySelectorAll(
             'a, button, .program-card, .coach-card, .specialized-card, .testimonial-card, .stat-card, .contact-btn, .achievement-card, input, select, textarea'
         );
@@ -107,7 +98,7 @@ class CustomCursor {
     }
 
     render() {
-        // Smooth follow with spring physics
+
         this.dotX += (this.mouseX - this.dotX) * 0.2;
         this.dotY += (this.mouseY - this.dotY) * 0.2;
         this.outlineX += (this.mouseX - this.outlineX) * 0.08;
@@ -122,9 +113,7 @@ class CustomCursor {
     }
 }
 
-// ============================================
-// MAGNETIC BUTTONS
-// ============================================
+
 class MagneticButtons {
     constructor() {
         if ('ontouchstart' in window || window.innerWidth <= 768) return;
@@ -159,9 +148,7 @@ class MagneticButtons {
     }
 }
 
-// ============================================
-// NAVIGATION
-// ============================================
+
 class Navigation {
     constructor() {
         this.nav = document.querySelector('.nav');
@@ -243,7 +230,7 @@ class Navigation {
         this.sidebarOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Stagger sidebar links animation
+   
         gsap.fromTo('.sidebar-link',
             { x: 60, opacity: 0 },
             { x: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.2 }
@@ -259,9 +246,7 @@ class Navigation {
     }
 }
 
-// ============================================
-// HERO ANIMATIONS
-// ============================================
+
 function heroAnimations() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -300,9 +285,7 @@ function heroAnimations() {
     });
 }
 
-// ============================================
-// SCROLL ANIMATIONS
-// ============================================
+
 class ScrollAnimations {
     constructor() {
         this.init();
@@ -315,7 +298,7 @@ class ScrollAnimations {
     }
 
     revealElements() {
-        // Reveal text elements
+        
         gsap.utils.toArray('.reveal-text').forEach(el => {
             gsap.to(el, {
                 opacity: 1,
@@ -330,7 +313,6 @@ class ScrollAnimations {
             });
         });
 
-        // Reveal up elements with stagger
         gsap.utils.toArray('.reveal-up').forEach(el => {
             gsap.to(el, {
                 opacity: 1,
@@ -345,7 +327,6 @@ class ScrollAnimations {
             });
         });
 
-        // Reveal scale elements
         gsap.utils.toArray('.reveal-scale').forEach(el => {
             gsap.to(el, {
                 opacity: 1,
@@ -360,7 +341,7 @@ class ScrollAnimations {
             });
         });
 
-        // Reveal left
+  
         gsap.utils.toArray('.reveal-left').forEach(el => {
             gsap.to(el, {
                 opacity: 1,
@@ -375,7 +356,7 @@ class ScrollAnimations {
             });
         });
 
-        // Reveal right
+   
         gsap.utils.toArray('.reveal-right').forEach(el => {
             gsap.to(el, {
                 opacity: 1,
@@ -424,15 +405,14 @@ class ScrollAnimations {
     }
 
     animateSections() {
-        // Specialized cards stagger
+       
         ScrollTrigger.create({
             trigger: '.specialized-grid',
             start: 'top 80%',
             once: true,
             onEnter: () => {
                 const cards = gsap.utils.toArray('.specialized-card');
-                
-                // Fly in from sides and bottom
+        
                 if(cards[0]) {
                     gsap.fromTo(cards[0], 
                         { x: -150, y: 50, opacity: 0 }, 
@@ -454,7 +434,7 @@ class ScrollAnimations {
             }
         });
 
-        // Program cards stagger
+  
         ScrollTrigger.create({
             trigger: '.programs-grid',
             start: 'top 80%',
@@ -470,7 +450,7 @@ class ScrollAnimations {
             }
         });
 
-        // Coach cards
+     
         ScrollTrigger.create({
             trigger: '.coaches-wrapper',
             start: 'top 80%',
@@ -486,7 +466,6 @@ class ScrollAnimations {
             }
         });
 
-        // Achievement cards
         ScrollTrigger.create({
             trigger: '.achievements-wrapper',
             start: 'top 80%',
@@ -502,13 +481,13 @@ class ScrollAnimations {
             }
         });
 
-        // Testimonial cards
+  
         const testSection = document.querySelector('#testimonials');
         if (testSection) {
             const cards = testSection.querySelectorAll('.testimonial-card');
             
             if (window.innerWidth > 768) {
-                // Desktop: Scrub animation from corners to center
+                
                 gsap.set(cards, { opacity: 1 });
                 
                 const tl = gsap.timeline({
@@ -521,20 +500,19 @@ class ScrollAnimations {
                 });
                 
                 const centerIndex = (cards.length - 1) / 2;
-                const distance = 120; // small movement span
+                const distance = 120; 
 
                 cards.forEach((card, i) => {
                     const offset = i - centerIndex;
                     const initialX = offset * distance;
-                    
-                    // Animate inwards
+                  
                     tl.fromTo(card, { x: initialX }, { x: 0, duration: 1, ease: 'none' }, 0);
                     
-                    // Animate outwards
+                    
                     tl.to(card, { x: initialX, duration: 1, ease: 'none' }, 1);
                 });
             } else {
-                // Mobile: Standard stagger reveal
+             
                 ScrollTrigger.create({
                     trigger: testSection,
                     start: 'top 80%',
@@ -549,7 +527,6 @@ class ScrollAnimations {
             }
         }
 
-        // Contact items stagger
         ScrollTrigger.create({
             trigger: '.contact-content',
             start: 'top 80%',
